@@ -7,7 +7,7 @@ window.onload = function() {
   wallParams = {
     access_token:"5f864451221b0e8d2ff61b3179ac1a3b5d4ac9e3",
     after: 0,
-    limit: 10,
+    limit: 5,
     types: "",
     fields: "id,comment,external_name,type"
   },
@@ -50,9 +50,7 @@ window.onload = function() {
         $("main").prepend(postHtml);
       });
 
-      if (typeof callback === "function") {
-        callback();
-      }
+      $(".post").slice(10).remove();
     });
 
     if (!customParams) {
