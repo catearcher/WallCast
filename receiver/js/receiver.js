@@ -3,7 +3,7 @@ window.onload = function() {
 
   var
   wallUrl = "https://beta.walls.io/api/posts.json",
-  postTemplate = "<div data-id='#{id}>' class='#{type} post' data-type='#{type}'><strong>#{external_name}</strong>: #{comment} [#{type}]</div>",
+  postTemplate = "<div data-id='#{id}>' class='#{type} post' data-type='#{type}'><strong>#{external_name}</strong> #{comment}<small>#{type}</small></div>",
   wallParams = {
     access_token:"5f864451221b0e8d2ff61b3179ac1a3b5d4ac9e3",
     after: 0,
@@ -57,11 +57,9 @@ window.onload = function() {
     });
 
     if (!customParams) {
-      setTimeout(fetchPosts, 2000);
+      setTimeout(fetchPosts, 5000);
     }
-
   };
-
 
 
   cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
