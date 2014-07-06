@@ -16,16 +16,14 @@ window.onload = function() {
     wallParams.types = filter;
 
     if (filter) {
-      wallParams.after = $("div[data-type='" + filter + "']:first").data("id");
-
       $("div[data-type='" + filter + "']").removeClass("hidden");
       $("div[data-type!='" + filter + "']").addClass("hidden");
     } else {
-      wallParams.after = $("div").eq(0).data("id");
       $("div").removeClass("hidden");
     }
 
     fetchPosts({
+      after: 0,
       types: filter
     });
   },
