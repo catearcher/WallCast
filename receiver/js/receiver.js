@@ -3,13 +3,13 @@ window.onload = function() {
 
   var
   wallUrl = "https://beta.walls.io/api/posts.json",
-  postTemplate = "<div data-id='#{id}>' class='#{type} post' data-type='#{type}'><strong>#{external_name}</strong> #{comment}<small>#{type}</small></div>",
+  postTemplate = "<div data-id='#{id}>' class='#{type} post' data-type='#{type}'><strong>#{external_name}</strong> #{comment}<img src='#{post_image}'><small>#{type}</small></div>",
   wallParams = {
     access_token:"5f864451221b0e8d2ff61b3179ac1a3b5d4ac9e3",
     after: 0,
     limit: 5,
     types: "",
-    fields: "id,comment,external_name,type"
+    fields: "id,comment,external_name,type,post_image"
   },
 
   setFilter = function(filter) {

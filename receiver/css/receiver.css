@@ -73,6 +73,15 @@ main {
   transform-origin:top right;
 }
 
+.post img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+img[src=""] {
+  display: none;
+}
+
 .hidden {
   display: none;
 }
