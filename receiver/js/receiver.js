@@ -19,6 +19,7 @@ window.onload = function() {
       $("div[data-type='" + filter + "']").removeClass("hidden");
       $("div[data-type!='" + filter + "']").addClass("hidden");
     } else {
+      wallParams.after = $("div").eq(0).data("id");
       $("div").removeClass("hidden");
     }
 
