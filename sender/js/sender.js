@@ -37,11 +37,27 @@
   },
 
   receiverMessage = function(namespace, message) {
-    console.log(message);
+
   },
 
   onError = function(message) {
     console.error(message);
+  },
+
+  changeColor = function() {
+    if (session) {
+      session.sendMessage(namespace, {
+        color: $(".color").val()
+      }, function() {}, onError);
+    }
+  },
+
+  applyFilter = function(filter) {
+    if (session) {
+      session.sendMessage(namespace, {
+        filter: filter
+      }, function() {}, onError);
+    }
   };
 
   initInterval = setInterval(function() {
@@ -55,6 +71,14 @@
     chrome.cast.requestSession(function(e) {
       session = e;
     }, onError);
+
+    return false;
+  });
+
+  $(".color").on("input", changeColor);
+
+  $("[data-action='apply-filter']").on("click", function() {
+    applyFilter($(this).data("filter"));
 
     return false;
   });
