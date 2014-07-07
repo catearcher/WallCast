@@ -106,10 +106,6 @@ window.onload = function() {
       setFilter(data.filter);
     }
 
-    if (data.color) {
-      $("body").css("background-color", data.color);
-    }
-
     // inform all senders on the CastMessageBus of the incoming message event
     // sender message listener will be invoked
     window.messageBus.send(e.senderId, e.data);

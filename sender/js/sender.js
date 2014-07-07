@@ -44,14 +44,6 @@
     console.error(message);
   },
 
-  changeColor = function() {
-    if (session) {
-      session.sendMessage(namespace, {
-        color: $(".color").val()
-      }, function() {}, onError);
-    }
-  },
-
   applyFilter = function(filter) {
     if (session) {
       session.sendMessage(namespace, {
@@ -74,8 +66,6 @@
 
     return false;
   });
-
-  $(".color").on("input", changeColor);
 
   $("[data-action='apply-filter']").on("click", function() {
     applyFilter($(this).data("filter"));
