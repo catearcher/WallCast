@@ -25,7 +25,7 @@
     );
 
     chrome.cast.initialize(apiConfig, function() {
-      $(".connect-chromecast").removeClass("hidden");
+      $(".connect-chromecast").removeClass("inactive");
     }, onError);
   },
 
