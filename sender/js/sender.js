@@ -8,12 +8,21 @@
   session,
   appId = "41F577EA",
   namespace = "urn:x-cast:at.diesocialisten.dev.wallcast",
-  initInterval,
+  initInterval = setInterval(function() {
+    if (chrome.cast && chrome.cast.isAvailable) {
+      initializeCastApi();
+      clearInterval(initInterval);
+    }
+  }, 500),
 
   initializeCastApi = function() {
     var
     sessionRequest = new chrome.cast.SessionRequest(appId),
-    apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
+    apiConfig = new chrome.cast.ApiConfig(
+      sessionRequest,
+      sessionListener,
+      receiverListener
+    );
 
     chrome.cast.initialize(apiConfig, function() {
       $(".connect-chromecast").removeClass("hidden");
@@ -51,13 +60,6 @@
       }, function() {}, onError);
     }
   };
-
-  initInterval = setInterval(function() {
-    if (chrome.cast && chrome.cast.isAvailable) {
-      initializeCastApi();
-      clearInterval(initInterval);
-    }
-  }, 500);
 
   $(".connect-chromecast").on("click", function() {
     chrome.cast.requestSession(function(e) {
